@@ -3,6 +3,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Button } from "@mui/material";
 import { userRows } from "../DummyData";
+import { Link } from "react-router-dom";
 
 const Slider = () => {
   const [index, setIndex] = useState(0);
@@ -16,7 +17,7 @@ const Slider = () => {
   };
 
   return (
-    <div className="h-screen w-screen flex hidden sm:block relative overflow-hidden">
+    <div className="h-screen w-screen flex hidden sm:block relative overflow-hidden ">
       {/* Left Arrow */}
       <div className="flex justify-center items-center bg-slate-100 w-12 h-12 rounded-full absolute top-0 bottom-0 m-auto opacity-40 cursor-pointer left-10 z-20">
         <ArrowBackIcon onClick={() => handleArrowClick("left")} />
@@ -59,9 +60,26 @@ const Slider = () => {
                 DON'T COMPROMISE STYLE! GET 50% OFF ON NEW ARRIVALS
               </p>
               <div>
-                <Button variant="contained" size="large">
+                <Link to={`/products/${item?.name}`}>
+                  <Button
+                    variant="outlined"
+                    size="large"
+                    sx={{
+                      backgroundColor: "white",
+                      color: "grey",
+                      borderColor: "grey",
+                      "&:hover": {
+                        backgroundColor: "lightgrey",
+                        borderColor: "grey",
+                      },
+                    }}
+                  >
+                    SHOP NOW
+                  </Button>
+                </Link>
+                {/* <Button variant="contained" size="large">
                   SHOP NOW
-                </Button>
+                </Button> */}
               </div>
             </div>
           </div>

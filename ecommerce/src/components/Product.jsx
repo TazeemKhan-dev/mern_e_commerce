@@ -3,19 +3,15 @@ import ProductItems from "./ProducttItems";
 import { productItems } from "../DummyData";
 import axios from "axios";
 // const Product = ({ filter, cat }) => {
-const Product = ({ filters, cat = false, sort }) => {
+const Product = ({ filters, cat = false, sort, allProducts }) => {
   const [products, setProducts] = useState([]);
   const [filterproducts, setFilterProducts] = useState([]);
-  console.log("products", products);
-  console.log("filters", filters);
-  console.log("sort", sort);
+  const baseUrl = import.meta.env.VITE_BASE_URL;
   useEffect(() => {
     const getProducts = async () => {
       try {
         const res = await axios.get(
-          cat
-            ? `http://localhost:5000/products?category=${cat}`
-            : "http://localhost:5000/products"
+          cat ? `${baseUrl}/products?category=${cat}` : `${baseUrl}/products`
         );
         setProducts(res.data);
       } catch (error) {
@@ -25,7 +21,7 @@ const Product = ({ filters, cat = false, sort }) => {
     getProducts(); // Call the async function
   }, [filters, cat]);
   useEffect(() => {
-    if (cat) {
+    if (cat || allProducts) {
       setFilterProducts(
         products.filter((i) =>
           Object.entries(filters).every(([key, value]) =>
@@ -34,8 +30,8 @@ const Product = ({ filters, cat = false, sort }) => {
         )
       );
     }
+    // if (allProducts) setFilterProducts(productItems);
   }, [filters, cat, products]);
-
   useEffect(() => {
     if (sort === "Newest") {
       setFilterProducts((p) => {
@@ -44,15 +40,13 @@ const Product = ({ filters, cat = false, sort }) => {
         );
       });
     } else if (sort === "Price (asc)") {
-      console.log("Sorting by ascending price");
       setFilterProducts((p) => {
+        s;
         return [...p].sort((a, b) => a.price - b.price);
       });
     } else if (sort === "") {
-      console.log("Sorting by ascending price");
       setFilterProducts(products);
     } else {
-      console.log("Sorting by descending price");
       setFilterProducts((p) => {
         return [...p].sort((a, b) => b.price - a.price);
       });
@@ -60,16 +54,24 @@ const Product = ({ filters, cat = false, sort }) => {
   }, [sort]);
 
   return (
-    <div className="flex flex-wrap items-center justify-center m-8">
+    <div className="flex pt-20 flex-wrap items-center justify-center bg-white dark:bg-gray-800 text-black dark:text-white">
       {cat
         ? filterproducts?.map((item) => (
             <div className=" " key={item?.id}>
               <ProductItems item={item} />
             </div>
           ))
-        : products.slice(0, 8)?.map((item) => (
+        : allProducts
+        ? filterproducts?.map((item) => (
             <div className=" " key={item?.id}>
               <ProductItems item={item} />
+            </div>
+          ))
+        : products.slice(0, 3)?.map((item) => (
+            <div>
+              <div className=" " key={item?.id}>
+                <ProductItems item={item} />
+              </div>
             </div>
           ))}
     </div>

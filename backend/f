@@ -1,11 +1,24 @@
 {
-  "title": "Red Jacket",
-  "desc": "A Red Jacket that will give u a look",
-  "img": "https://plus.unsplash.com/premium_photo-1675186049366-64a655f8f537?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "title": "White Jeans",
+  "desc": "A White Jeans that will give u a look",
+  "img": "https://plus.unsplash.com/premium_photo-1690034979146-59a98168f27e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   "categories": [
-    "Women"
+    "Women",
+    "Jeans"
   ],
-  "size": "L",
-  "color": "Red",
-  "price": 1000
+  "size": "XL",
+  "color": "White",
+  "price": 220
+}
+{
+  "title": "Blue Jeans",
+  "desc": "A Blue Jeans that will give u a look",
+  "img": "https://plus.unsplash.com/premium_photo-1672136996534-00298cbdb14f?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "categories": [
+    "Men",
+    "Jeans"
+  ],
+  "size": "X",
+  "color": "Blue",
+  "price": 140
 }

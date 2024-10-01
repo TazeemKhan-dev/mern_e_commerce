@@ -2,6 +2,7 @@ import { Button } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/apiCalls";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -37,7 +38,7 @@ const Login = () => {
           />
         </form>
         <div
-          className={`bg-teal-500 lg:w-1/4 p-1 flex justify-center items-center ${
+          className={`bg-teal-500 p-1 flex justify-center items-center ${
             username === "" && password === ""
               ? "cursor-not-allowed"
               : "cursor-pointer"
@@ -54,13 +55,9 @@ const Login = () => {
           </Button>
         </div>
         {error && <div className="text-red-500">Something went wrong...</div>}
-        <div className="flex flex-col gap-3">
-          <a href="" className="underline">
-            Forgot Password
-          </a>
-          <a href="" className="underline">
-            Create Account
-          </a>
+        <div className="cursor-pointer font-bold text-l flex justify-between">
+          <Link to={"/register"}> Create Account</Link>
+          <Link to={"/"}> Home</Link>
         </div>
       </div>
     </div>

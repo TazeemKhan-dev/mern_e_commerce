@@ -8,7 +8,7 @@ import { Color, Size, Sorting } from "../DummyData";
 import Announcements from "../components/Announcements";
 import { useLocation } from "react-router-dom";
 
-const ProductList = () => {
+const Shop = () => {
   const location = useLocation();
   const cat = location.pathname.split("/")[2];
   const [selectedFilter, setSelectedFilter] = useState({});
@@ -48,9 +48,11 @@ const ProductList = () => {
     <div className="bg-white dark:bg-gray-800 text-black dark:text-white">
       <Navbar />
       <div className="pt-20">
-        <div className="text-3xl md:text-4xl lg:text-7xl font-bold tracking-widest py-3 md:py-5 lg:py-7 px-20 text-zinc-500 bg-red-100 ">
-          {cat}
-        </div>
+        {cat && (
+          <div className="text-3xl md:text-4xl lg:text-7xl font-bold tracking-widest py-3 md:py-5 lg:py-7 px-20 text-zinc-500 bg-red-100 ">
+            {cat}
+          </div>
+        )}
         <div className="flex lg:flex-row flex-col gap-4 justify-between m-5">
           <div className="flex lg:justify-center lg:items-center gap-10 lg:mr-12">
             <span className="font-semibold text-xl md:text-3xl ">
@@ -65,7 +67,7 @@ const ProductList = () => {
             />
           </div>
           <div className="flex lg:justify-center lg:items-center gap-10">
-            <span className="font-semibold text-3xl lg:pl-10">
+            <span className="font-semibold text-xl md:text-3xl  lg:pl-10">
               {" "}
               Filter Products
             </span>
@@ -86,11 +88,17 @@ const ProductList = () => {
           </div>
         </div>
       </div>
-      <Products filters={selectedFilter} cat={cat} sort={selectedType} />
+
+      <Products
+        filters={selectedFilter}
+        cat={cat}
+        sort={selectedType}
+        allProducts
+      />
       <Newsletter />
       <Footer />
     </div>
   );
 };
 
-export default ProductList;
+export default Shop;

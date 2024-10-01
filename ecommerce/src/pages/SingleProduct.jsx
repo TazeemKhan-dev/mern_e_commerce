@@ -49,15 +49,14 @@ const SingleProduct = () => {
   }, [id]);
 
   return (
-    <div>
+    <div className="bg-white dark:bg-gray-800 text-black dark:text-white">
       <Navbar />
-      <Announcements />
-      <div className="flex mx-12 my-7 flex-col md:flex-row">
+      <div className="flex pt-20 mx-12 my-7 flex-col md:flex-row bg-white dark:bg-gray-800 text-black dark:text-white">
         <div className="flex-1 flex justify-center object-contain h-full md:w-3/4 lg:w-full ">
           <img
             src={products?.img}
             alt=""
-            className="lg:h-[70vh] md:w-2/3 md:h-[760vh] h-1/2 w-1/2"
+            className="lg:h-[70vh] md:w-2/3 md:h-[760vh] h-1/2 w-1/2 object-cover"
           />
         </div>
         <div className="flex-1 flex flex-col gap-1 md:gap-6 lg:gap-8 p-3 md:-5">
@@ -72,7 +71,7 @@ const SingleProduct = () => {
             <div className="flex-1 flex gap-2  items-center">
               <span className="font-bold">Color</span>
               <span
-                className="inline-block rounded-full cursor-pointer h-6 w-6 border-black border-2"
+                className="inline-block rounded-full cursor-pointer h-6 w-6 bg-white dark:bg-gray-800 text-black dark:text-white border-2"
                 style={{ backgroundColor: `${products?.color}` }}
               ></span>
             </div>
