@@ -47,7 +47,7 @@ const ProductList = () => {
   return (
     <div className="bg-white dark:bg-gray-800 text-black dark:text-white">
       <Navbar />
-      <div className="pt-20">
+      <div className="pt-28">
         <div className="text-3xl md:text-4xl lg:text-7xl font-bold tracking-widest py-3 md:py-5 lg:py-7 px-20 text-zinc-500 bg-red-100 ">
           {cat}
         </div>

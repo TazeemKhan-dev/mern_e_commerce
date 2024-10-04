@@ -17,7 +17,8 @@ const Slider = () => {
   };
 
   return (
-    <div className="h-screen w-screen flex hidden sm:block relative overflow-hidden ">
+    // <div className="h-screen w-screen flex hidden sm:block relative overflow-hidden ">
+    <div className="h-screen w-screen flex relative overflow-hidden ">
       {/* Left Arrow */}
       <div className="flex justify-center items-center bg-slate-100 w-12 h-12 rounded-full absolute top-0 bottom-0 m-auto opacity-40 cursor-pointer left-10 z-20">
         <ArrowBackIcon onClick={() => handleArrowClick("left")} />
@@ -35,28 +36,28 @@ const Slider = () => {
         {userRows.map((item, i) => (
           <div
             key={i}
-            className={`flex items-center w-screen h-screen ${item?.bg}`}
+            className={`flex flex-col md:flex-row items-center w-screen h-screen  ${item?.bg}`}
             style={{
               flexShrink: 0, // Prevents items from shrinking
               width: "100vw", // Each item should take full width of the viewport
             }}
           >
             {/* Image Container */}
-            <div className="flex-1 h-full flex justify-center">
+            <div className=" md:flex-1 h-1/2 md:h-full flex justify-center">
               <img
                 src={item?.avatar}
                 alt=""
-                className="sm:h-1/2 w-[30&] md:h-4/5 object-contain my-7"
+                className="h-full w-[30&]  object-contain my-7"
               />
             </div>
 
             {/* Info Container */}
-            <div className="flex-1 flex flex-col justify-start md:pb-32 md:pl-10 sm:pb-20 sm:pl-6">
-              <h1 className="sm:8 md:pb-14 font-extrabold text-pretty sm:text-4xl md:text-9xl tracking-widest">
+            <div className="flex-1 flex flex-col items-center md:items-start mt-16 md:justify-start md:pb-32 md:pl-10 sm:pb-20 sm:pl-6">
+              <h1 className="sm:8 md:pb-14 font-extrabold text-pretty text-4xl md:text-9xl tracking-widest">
                 {item?.name}
               </h1>
-              <h2 className="font-bold text-5xl">Special Sale</h2>
-              <p className="my-12 font-semibold tracking-widest">
+              <h2 className="font-bold text-2xl md:text-5xl">Special Sale</h2>
+              <p className="my-12 font-semibold tracking-widest px-5">
                 DON'T COMPROMISE STYLE! GET 50% OFF ON NEW ARRIVALS
               </p>
               <div>

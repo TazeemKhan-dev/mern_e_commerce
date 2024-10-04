@@ -30,7 +30,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50  bg-white dark:bg-gray-800 text-black dark:text-white h-24 md:h-20">
+    <div className="fixed top-0 left-0 w-full z-50  bg-white dark:bg-gray-800 text-black dark:text-white h-24 md:h-28 lg:h-20">
       <div>
         <Snackbar
           open={open}
@@ -42,7 +42,7 @@ const Navbar = () => {
       <div className="p-4 gap-2 md:p-6 lg:p-8 flex flex-col justify-center items-center md:justify-start lg:flex-row">
         <div className="flex flex-1 justify-center items-center md:justify-start font-bold text-2xl md:text-3xl lg:text-4xl cursor-pointer">
           <div className="flex gap-3">
-            <Link to={"/"}>Monarch-Wear</Link>
+            <Link to={"/"}>StyleHive</Link>
             <IconButton onClick={() => setIsDarkMode(!isDarkMode)}>
               <Tooltip
                 title={

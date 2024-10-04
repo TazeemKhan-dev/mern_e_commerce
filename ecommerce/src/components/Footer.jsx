@@ -29,7 +29,7 @@ const Footer = () => {
       </div>
 
       <div className="flex-1 p-5">
-        <h3 className="pb-7 font-semibold text-xl">Useful Linls</h3>
+        <h3 className="pb-7 font-semibold text-xl">Useful Links</h3>
         <ul className="flex font-bold flex-wrap mb-3">
           <li className="w-1/2 mb-3">
             <Link to={"/"}>Home</Link>
@@ -49,16 +49,17 @@ const Footer = () => {
         </ul>
       </div>
       <div className="flex-1 flex justify-center items-center flex-col p-5">
-        <div className="font-bold text-3xl">Monach-Clothing</div>
-        <div className="my-7">
-          Monarch-Clothing is an e-commerce platform focused on providing a
-          seamless online shopping experience. It features a wide range of
-          products, a modern user interface, and responsive design. The app
-          allows users to browse and purchase items, manage their cart, and
-          securely complete transactions using Stripe integration. With a dark
-          mode toggle, a smooth user experience across devices, and personalized
-          features like login and logout functionality, Monarch-Clothing offers
-          a sleek and intuitive way to shop for apparel.
+        <div className="font-bold text-3xl">StyleHive</div>
+        <div className="my-7 font-thin">
+          StyleHive is your go-to destination for fashion-forward individuals
+          who want to express their unique style. From chic streetwear to
+          elegant evening wear, we offer a curated selection of high-quality
+          pieces designed to elevate your wardrobe. Whether you're looking for
+          the latest trends or timeless classics, StyleHive has something for
+          everyone. With a commitment to sustainable fashion and innovative
+          designs, we help you stay ahead of the curve while staying true to
+          your personal style. Explore, create, and express yourself with
+          StyleHive—where fashion meets individuality.
         </div>
         <div className="flex">
           <div className="w-12 h-12 flex justify-center items-center text-white bg-sky-700 rounded-full mx-3">
