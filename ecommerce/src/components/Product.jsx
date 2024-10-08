@@ -1,25 +1,32 @@
 import React, { useEffect, useState } from "react";
 import ProductItems from "./ProducttItems";
-import { productItems } from "../DummyData";
 import axios from "axios";
-// const Product = ({ filter, cat }) => {
+import Loader from "./Loader";
+// import Loader from "./Loader"; // Import the Loader component
+
 const Product = ({ filters, cat = false, sort, allProducts }) => {
   const [products, setProducts] = useState([]);
   const [filterproducts, setFilterProducts] = useState([]);
+  const [loading, setLoading] = useState(true); // Add loading state
   const baseUrl = import.meta.env.VITE_BASE_URL;
+
   useEffect(() => {
     const getProducts = async () => {
       try {
+        setLoading(true); // Start loading
         const res = await axios.get(
           cat ? `${baseUrl}/products?category=${cat}` : `${baseUrl}/products`
         );
         setProducts(res.data);
       } catch (error) {
         console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false); // Stop loading after the API call
       }
     };
     getProducts(); // Call the async function
   }, [filters, cat]);
+
   useEffect(() => {
     if (cat || allProducts) {
       setFilterProducts(
@@ -30,8 +37,8 @@ const Product = ({ filters, cat = false, sort, allProducts }) => {
         )
       );
     }
-    // if (allProducts) setFilterProducts(productItems);
   }, [filters, cat, products]);
+
   useEffect(() => {
     if (sort === "Newest") {
       setFilterProducts((p) => {
@@ -41,7 +48,6 @@ const Product = ({ filters, cat = false, sort, allProducts }) => {
       });
     } else if (sort === "Price (asc)") {
       setFilterProducts((p) => {
-        s;
         return [...p].sort((a, b) => a.price - b.price);
       });
     } else if (sort === "") {
@@ -55,25 +61,31 @@ const Product = ({ filters, cat = false, sort, allProducts }) => {
 
   return (
     <div className="flex pt-20 flex-wrap items-center justify-center bg-white dark:bg-gray-800 text-black dark:text-white">
-      {cat
-        ? filterproducts?.map((item) => (
-            <div className=" " key={item?.id}>
-              <ProductItems item={item} />
-            </div>
-          ))
-        : allProducts
-        ? filterproducts?.map((item) => (
-            <div className=" " key={item?.id}>
-              <ProductItems item={item} />
-            </div>
-          ))
-        : products.slice(0, 3)?.map((item) => (
-            <div>
-              <div className=" " key={item?.id}>
-                <ProductItems item={item} />
-              </div>
-            </div>
-          ))}
+      {loading ? (
+        <Loader /> // Use the Loader component when loading
+      ) : (
+        <>
+          {cat
+            ? filterproducts?.map((item) => (
+                <div className=" " key={item?.id}>
+                  <ProductItems item={item} />
+                </div>
+              ))
+            : allProducts
+            ? filterproducts?.map((item) => (
+                <div className=" " key={item?.id}>
+                  <ProductItems item={item} />
+                </div>
+              ))
+            : products.slice(0, 3)?.map((item) => (
+                <div key={item?.id}>
+                  <div className=" ">
+                    <ProductItems item={item} />
+                  </div>
+                </div>
+              ))}
+        </>
+      )}
     </div>
   );
 };
